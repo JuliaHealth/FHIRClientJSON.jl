@@ -1,5 +1,5 @@
 module FHIRClientJSON
 
-# Write your package code here.
+f(x) = x + x
 
-end
+end # end module FHIRClientJSON

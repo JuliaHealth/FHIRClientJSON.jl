@@ -2,5 +2,5 @@ using FHIRClientJSON
 using Test
 
 @testset "FHIRClientJSON.jl" begin
-    # Write your tests here.
+    @test FHIRClientJSON.f(1) == 2
 end
