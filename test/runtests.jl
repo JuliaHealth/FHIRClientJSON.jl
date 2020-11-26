@@ -1,6 +1,10 @@
 using FHIRClientJSON
 using Test
 
+import HTTP
+import JSON3
+
 @testset "FHIRClientJSON.jl" begin
-    @test FHIRClientJSON.f(1) == 2
+    include("unit-tests.jl")
+    include("integration-tests.jl")
 end
