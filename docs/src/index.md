@@ -2,6 +2,10 @@
 CurrentModule = FHIRClientJSON
 ```
 
-# FHIRClientJSON
+# FHIRClientJSON.jl (deprecated in favor of [FHIRClient.jl](https://github.com/JuliaHealth/FHIRClient.jl))
 
-The source code for this package is available in the [GitHub repository](https://github.com/JuliaHealth/FHIRClientJSON.jl).
+FHIRClientJSON.jl is deprecated.
+
+Please use
+[FHIRClient.jl](https://github.com/JuliaHealth/FHIRClient.jl)
+instead.
