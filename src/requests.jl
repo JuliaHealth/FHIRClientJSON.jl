@@ -82,12 +82,6 @@ end
     return full_url_uri
 end
 
-"""
-    request_raw(client, verb, path; query, body, headers)
-    request_raw(client, verb, path; query, headers)
-    request_raw(client, verb, path; body, headers)
-    request_raw(client, verb, path; headers)
-"""
 @inline function request_raw(client::Client,
                              verb::AbstractString,
                              path::AbstractString;
@@ -119,12 +113,6 @@ end
     return body_string
 end
 
-"""
-    request(client, verb, path; query, body, headers)
-    request(client, verb, path; query, headers)
-    request(client, verb, path; body, headers)
-    request(client, verb, path; headers)
-"""
 @inline function request(client::Client,
                          verb::AbstractString,
                          path::AbstractString;
