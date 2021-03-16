@@ -1,23 +1,6 @@
-"""
-Supertype of the various authentication types.
-
-## Summary
-abstract type Authentication <: Any
-"""
 abstract type Authentication
 end
 
-"""
-The base URL for a FHIR server.
-
-The base URL is also called the "Service Root URL"
-
-## Summary
-struct BaseURL <: Any
-
-## Fields
-- uri :: HTTP.URIs.URI
-"""
 struct BaseURL
     uri::HTTP.URI
 end
@@ -26,26 +9,8 @@ function _get_http_uri_string(uri::HTTP.URI)::String
     return Base.string(uri)
 end
 
-"""
-    BaseURL(base_url::AbstractString)
-
-Construct a `BaseURL` object given the base URL.
-
-The base URL is also called the "Service Root URL"
-"""
 BaseURL(base_url::AbstractString) = BaseURL(HTTP.URI(base_url))
 
-
-"""
-A FHIR client.
-
-## Summary
-struct Client{A <: Authentication} <: Any
-
-## Fields
-- base_url :: BaseURL
-- auth :: A
-"""
 struct Client{A <: Authentication}
     base_url::BaseURL
     auth::A
