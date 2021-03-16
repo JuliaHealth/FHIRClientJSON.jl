@@ -25,14 +25,14 @@
         client = FHIRClientJSON.Client(base_url, auth)
         @test FHIRClientJSON.get_base_url(client) == base_url
         search_request_path = "/Patient?given=Jason&family=Argonaut"
-        response_search_results_bundle = BrokenRecord.playback(() -> FHIRClientJSON.request(client, "GET", search_request_path), "recording-$(i)-1.bson")
+        response_search_results_bundle = BrokenRecord.playback(() -> FHIRClientJSON.request_json(client, "GET", search_request_path), "recording-$(i)-1.bson")
         patient_id = response_search_results_bundle.entry[1].resource.id
         patient_request = "/Patient/$(patient_id)"
         patients = [
-            BrokenRecord.playback(() -> FHIRClientJSON.request(client, "GET", patient_request), "recording-$(i)-2.bson")
-            BrokenRecord.playback(() -> FHIRClientJSON.request(client, "GET", patient_request; body = JSON3.read("{}")), "recording-$(i)-3.bson")
-            BrokenRecord.playback(() -> FHIRClientJSON.request(client, "GET", patient_request; query = Dict{String, String}()), "recording-$(i)-4.bson")
-            BrokenRecord.playback(() -> FHIRClientJSON.request(client, "GET", patient_request; body = JSON3.read("{}"), query = Dict{String, String}()), "recording-$(i)-5.bson")
+            BrokenRecord.playback(() -> FHIRClientJSON.request_json(client, "GET", patient_request), "recording-$(i)-2.bson")
+            BrokenRecord.playback(() -> FHIRClientJSON.request_json(client, "GET", patient_request; body = JSON3.read("{}")), "recording-$(i)-3.bson")
+            BrokenRecord.playback(() -> FHIRClientJSON.request_json(client, "GET", patient_request; query = Dict{String, String}()), "recording-$(i)-4.bson")
+            BrokenRecord.playback(() -> FHIRClientJSON.request_json(client, "GET", patient_request; body = JSON3.read("{}"), query = Dict{String, String}()), "recording-$(i)-5.bson")
         ]
         for patient in patients
             @test patient isa AbstractDict
