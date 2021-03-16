@@ -120,17 +120,17 @@ end
 end
 
 """
-    request(client, verb, path; query, body, headers)
-    request(client, verb, path; query, headers)
-    request(client, verb, path; body, headers)
-    request(client, verb, path; headers)
+    request_json(client, verb, path; query, body, headers)
+    request_json(client, verb, path; query, headers)
+    request_json(client, verb, path; body, headers)
+    request_json(client, verb, path; headers)
 """
-@inline function request(client::Client,
-                         verb::AbstractString,
-                         path::AbstractString;
-                         body::Union{JSON3.Object, Nothing} = nothing,
-                         headers::AbstractDict = Dict{String, String}(),
-                         query::Union{AbstractDict, Nothing} = nothing)
+@inline function request_json(client::Client,
+                              verb::AbstractString,
+                              path::AbstractString;
+                              body::Union{JSON3.Object, Nothing} = nothing,
+                              headers::AbstractDict = Dict{String, String}(),
+                              query::Union{AbstractDict, Nothing} = nothing)
     _new_request_body = _write_json_request_body(body)
     response_body::String = request_raw(client,
                                         verb,
